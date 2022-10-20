@@ -94,6 +94,7 @@ RC Db::drop_table(const char* table_name) {
   }
 
   auto table = opened_tables_[table_name];
+  table->destory(path_.c_str());
   delete table;
   opened_tables_.erase(table_name);
   LOG_INFO("Drop table success. table name=%s", table_name);
